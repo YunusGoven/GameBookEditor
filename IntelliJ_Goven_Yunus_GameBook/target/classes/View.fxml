@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints hgrow="ALWAYS" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
+      <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <MenuBar GridPane.hgrow="NEVER">
+      <Menu fx:id="mFile" mnemonicParsing="false" text="File">
+         <MenuItem fx:id="miSave" mnemonicParsing="false" onAction="#menuFileItem" text="Save" />
+         <MenuItem fx:id="miLoad" mnemonicParsing="false" onAction="#menuFileItem" text="Load" />
+      </Menu>
+      <Menu fx:id="mBook" mnemonicParsing="false" text="Book">
+         <MenuItem fx:id="miNewBook" mnemonicParsing="false" onAction="#menuBookItem" text="New Book" />
+         <MenuItem fx:id="miModifyParagraphs" mnemonicParsing="false" onAction="#menuBookItem" text="Modify Paragraphs" />
+         <MenuItem fx:id="miViewGraph" mnemonicParsing="false" onAction="#menuBookItem" text="View Graph" />
+         <MenuItem fx:id="miVerifyBook" mnemonicParsing="false" onAction="#menuBookItem" text="Verify Book" />
+      </Menu>
+   </MenuBar>
+   <HBox fx:id="hbTtitle" GridPane.rowIndex="1">
+      <TextField fx:id="tfTitle" prefHeight="26.0" prefWidth="707.0" promptText="Titre du livre" HBox.hgrow="SOMETIMES">
+         <HBox.margin>
+            <Insets left="5.0" right="30.0" top="25.0" />
+         </HBox.margin>
+      </TextField>
+      <Button fx:id="btnChangeTitle" mnemonicParsing="false" onAction="#changeTitle" prefHeight="26.0" prefWidth="75.0" text="Change" HBox.hgrow="NEVER">
+         <HBox.margin>
+            <Insets right="10.0" top="25.0" />
+         </HBox.margin>
+      </Button>
+   </HBox>
+   <GridPane fx:id="container" gridLinesVisible="true" GridPane.rowIndex="2">
+      <columnConstraints>
+         <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="-Infinity" />
+         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <GridPane.margin>
+         <Insets bottom="2.0" left="2.0" right="2.0" top="5.0" />
+      </GridPane.margin>
+      <GridPane fx:id="gParagraphList">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="18.399996948242187" minHeight="10.400003051757814" prefHeight="18.399996948242187" vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <GridPane.margin>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </GridPane.margin>
+         <Button fx:id="btnDeletePa" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#crudParagraphButton" text="Delete" GridPane.rowIndex="2">
+            <GridPane.margin>
+               <Insets bottom="2.0" left="2.0" top="10.0" />
+            </GridPane.margin>
+         </Button>
+         <ListView fx:id="lvlAllParagraph" onMouseClicked="#paragraphChoice" prefHeight="212.0" prefWidth="390.0" GridPane.rowIndex="1" />
+         <Label text="Paragraphe" />
+      </GridPane>
+      <GridPane fx:id="gContent" GridPane.columnIndex="1">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="18.0" minHeight="10.0" prefHeight="15.999989891052246" vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <GridPane.margin>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </GridPane.margin>
+         <Label text="Paragraph Content" />
+         <Button fx:id="btnSaveContent" disable="true" mnemonicParsing="false" onAction="#crudParagraphButton" text="Save" GridPane.rowIndex="2">
+            <GridPane.margin>
+               <Insets bottom="2.0" left="2.0" top="10.0" />
+            </GridPane.margin>
+         </Button>
+         <TextArea fx:id="taModifyContent" prefHeight="229.0" prefWidth="402.0" GridPane.rowIndex="1" />
+      </GridPane>
+      <GridPane fx:id="gNewParagraph" GridPane.rowIndex="1">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <GridPane.margin>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </GridPane.margin>
+         <HBox GridPane.rowIndex="1">
+            <GridPane.margin>
+               <Insets top="20.0" />
+            </GridPane.margin>
+            <Label text="Position">
+               <HBox.margin>
+                  <Insets top="3.0" />
+               </HBox.margin>
+            </Label>
+            <ChoiceBox fx:id="cbNewParagraphNum" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets left="10.0" top="3.0" />
+               </HBox.margin>
+            </ChoiceBox>
+         </HBox>
+         <Label text="New Paragraph" />
+         <VBox maxHeight="-Infinity" GridPane.rowIndex="2">
+            <Label text="Content" />
+            <TextArea fx:id="taNewParagraphContent" />
+         </VBox>
+         <Button fx:id="btnAddParagraph" mnemonicParsing="false" onAction="#crudParagraphButton" text="Add" GridPane.rowIndex="3">
+            <GridPane.margin>
+               <Insets bottom="2.0" left="2.0" top="10.0" />
+            </GridPane.margin>
+         </Button>
+      </GridPane>
+      <GridPane fx:id="gActions" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="147.59998779296876" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" prefHeight="26.799951171874994" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="76.800048828125" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <Label text="Actions">
+            <GridPane.margin>
+               <Insets left="5.0" />
+            </GridPane.margin>
+         </Label>
+         <HBox fx:id="hbButtonAction" disable="true" fillHeight="false" spacing="10.0" style="-fx-background-color: grey;" GridPane.rowIndex="2">
+            <Label minWidth="-Infinity" prefHeight="18.0" prefWidth="217.0" />
+            <Button fx:id="btnNewAction" disable="true" mnemonicParsing="false" onAction="#crudActionButton" text="Add">
+               <HBox.margin>
+                  <Insets bottom="2.0" top="2.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnDeleteAction" disable="true" mnemonicParsing="false" onAction="#crudActionButton" text="Delete">
+               <HBox.margin>
+                  <Insets bottom="2.0" top="2.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnSaveAction" disable="true" mnemonicParsing="false" onAction="#crudActionButton" text="Save">
+               <HBox.margin>
+                  <Insets bottom="2.0" top="2.0" />
+               </HBox.margin>
+            </Button>
+         </HBox>
+         <VBox fx:id="vbNewActionDisplay" prefHeight="200.0" prefWidth="100.0" visible="false" GridPane.rowIndex="3">
+            <Label prefHeight="18.0" prefWidth="115.0" text="Add new Action" />
+            <TextField fx:id="tfNewActionText" prefHeight="26.0" prefWidth="402.0" />
+            <HBox prefHeight="34.0" prefWidth="444.0">
+               <Label prefHeight="18.0" prefWidth="82.0" text="Destination" />
+               <ChoiceBox fx:id="cbNewActionDest" prefHeight="0.0" prefWidth="108.0">
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <padding>
+                     <Insets bottom="5.0" />
+                  </padding>
+               </ChoiceBox>
+               <Label prefHeight="18.0" prefWidth="140.0" />
+               <Button fx:id="btnAddNewAction" mnemonicParsing="false" onAction="#actionButtonConfirmation" prefHeight="26.0" prefWidth="57.0" text="Add" />
+            </HBox>
+         </VBox>
+         <VBox fx:id="vbDeleteAction" prefHeight="200.0" prefWidth="100.0" visible="false" GridPane.rowIndex="3">
+            <Label text="Supprimer une action" />
+            <Label fx:id="lDeleteAction" text="Etes-vous sur de supprimer cette action">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <Label prefHeight="18.0" prefWidth="38.0" />
+               <Button fx:id="btnRejectAction" mnemonicParsing="false" onAction="#actionButtonConfirmation" text="Non" />
+               <Label prefHeight="18.0" prefWidth="196.0" />
+               <Button fx:id="btnConfirmAction" mnemonicParsing="false" onAction="#actionButtonConfirmation" text="Oui" />
+            </HBox>
+         </VBox>
+         <VBox fx:id="vbAllActionDetail" prefHeight="200.0" prefWidth="100.0" visible="false" GridPane.rowIndex="1" />
+      </GridPane>
+      <GridPane fx:id="gDeletePConfirm" visible="false" GridPane.rowIndex="1">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="244.0" minHeight="10.0" prefHeight="244.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <Label text="Suppression d'un paragraphe" />
+         <Label fx:id="lDeleteParagraphMsg" text="Etes-vous sur de supprimer le paragraphe " GridPane.rowIndex="1">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <Label prefHeight="17.0" prefWidth="47.0" />
+            <Button fx:id="btnRejectDelPara" mnemonicParsing="false" onAction="#removeConfirmationButton" text="Non" />
+            <Label prefHeight="17.0" prefWidth="150.0" />
+            <Button fx:id="btnConfirlmDelPara" mnemonicParsing="false" onAction="#removeConfirmationButton" text="Oui" />
+         </HBox>
+      </GridPane>
+   </GridPane>
+   <GridPane fx:id="nbookcont" visible="false" GridPane.rowIndex="2">
+      <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <Label text="Etes vous sur de renouvler le livre">
+         <font>
+            <Font size="54.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnNNB" mnemonicParsing="false" onAction="#newBook" text="NON" GridPane.rowIndex="2" />
+      <Button fx:id="btnYNB" mnemonicParsing="false" onAction="#newBook" text="OUI" GridPane.rowIndex="1" />
+   </GridPane>
+   <GridPane fx:id="gVerify" visible="false" GridPane.rowIndex="2">
+      <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints maxHeight="169.59998168945313" minHeight="10.0" prefHeight="108.99999389648437" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="367.99999008178713" minHeight="10.0" prefHeight="192.20000610351562" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="269.99999084472654" minHeight="10.0" prefHeight="221.0000122070312" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <Label text="Verify Book">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label text="Noeuds absents de toutes actions :" GridPane.rowIndex="1">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label text="Noeuds terminaux inaccessibles à partir du début:" GridPane.rowIndex="2">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <HBox fx:id="hbNoedAbsent" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <HBox fx:id="hbNoedTermin" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+   </GridPane>
+   <GridPane fx:id="gGraph" prefHeight="485.0" prefWidth="800.0" visible="false" GridPane.rowIndex="2">
+      <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="462.00000000000006" minHeight="10.0" prefHeight="427.2000305175781" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="556.0000305175781" minHeight="10.0" prefHeight="60.39996948242185" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <Label text="View Graph">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Pane fx:id="lvGraph" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+      <Label text="• = destination" GridPane.rowIndex="2" />
+   </GridPane>
+</GridPane>
